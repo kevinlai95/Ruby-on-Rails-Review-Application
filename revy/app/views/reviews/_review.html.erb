@@ -1,0 +1,14 @@
+
+  <%#= link_to gravatar_for(review.restaurant, size: 50), review.restaurant %>
+
+
+  <h4><%= User.find(review.user_id).first_name %> <%= User.find(review.user_id).last_name %> says...</h4>
+
+  <div class="review-content">
+  		<p><%= review.content %> </p>
+  </div>
+
+  <div class="review-stars" data-score="<%= review.stars %>"></div>
+  <p>Posted <%= time_ago_in_words(review.created_at) %> ago.</p>
+  <br>
+    

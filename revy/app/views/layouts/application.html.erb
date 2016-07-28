@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+		<%= render 'layouts/head' %>
+	<body>
+		<div class="container">
+			<%= render 'layouts/menu' %>
+			<div class="container marketing">
+				<% flash.each do |message_type, message| %>
+        			<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+     			<% end %>
+     			<div class = "container">
+					<%= yield %>
+				</div> 
+			</div>
+			<%= render 'layouts/footer' %>
+			<%#= debug(params) if Rails.env.development? %>
+		</div>
+	</body>
+</html>

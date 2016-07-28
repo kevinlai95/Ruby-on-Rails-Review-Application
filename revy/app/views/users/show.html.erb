@@ -1,0 +1,26 @@
+<% provide(:title, @user.first_name) %>
+<div class="row">
+  <aside class="col-md-6">
+    <section class="user_info">
+        <%= gravatar_for @user %>
+        <h3>Name: <%= @user.first_name %> <%= @user.last_name %></h3>
+        <h3>Email: <%= @user.email %></h3>        
+
+    </section>
+  </aside>
+  
+  <div class="col-md-8">
+
+  <!--
+    <%# if @user.reviews.any? %>
+      <ol class="reviews">
+        <%#= @restaurant %>
+        <%#= render @reviews %>
+
+      </ol>
+      <%#= will_paginate @reviews %>
+    <%# end %>
+    -->
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
+  </div>
+</div>

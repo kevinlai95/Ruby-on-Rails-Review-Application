@@ -1,0 +1,47 @@
+<h4 class="current-category"><%= params[:category_type] %></h4>
+<div class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <% Category.all.each do |category| %>
+        <li class="<%= 'active' if params[:category_type] == category.category_type %>">
+          <%= link_to category.category_type, restaurants_path(category_type: category.category_type), class: "link" %>
+        </li>
+      <% end %>
+    </ul>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+
+	<div class  = "col-md-4">
+    <div class = "index-restaurants">
+         <center><a href = "/restaurants/<%= restaurant.id %>">
+         <%= image_tag restaurant.avatar.url(:restaurant_home), class:"restaurant_img_index" %>
+         </a></center>
+         <div class ="average-stars" data-score="<%= restaurant.reviews.average(:stars) %>"></div>
+         <% if restaurant.reviews.count == 1%>
+         		<p><%= restaurant.reviews.count %> review</p>
+         <% else %>
+         		<p><%= restaurant.reviews.count %> reviews</p>
+         <% end %>
+    	   <h3><%= restaurant.name %></h3>
+    	   <p><%= restaurant.city%>, <%= restaurant.state%></p>
+    </div>
+	</div>
+
+  <% end %>
+</div>
+
+<br>
+
+<script>
+  $('.average-stars').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

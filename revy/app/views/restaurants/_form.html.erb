@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :street %><br>
+    <%= f.text_field :street, class: 'form-control' %>
+
+    <%= f.label :city %><br>
+    <%= f.text_field :city, class: 'form-control' %>
+
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode, class: 'form-control' %>
+
+    <%= f.label :state %><br>
+    <%= f.text_field :state, class: 'form-control' %>
+
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone, class: 'form-control' %>
+
+    <%= f.label :website %><br>
+    <%= f.text_field :website, class: 'form-control' %>
+    <%= f.label :category %><br>
+    <%= select_tag(:category_id, options_for_select(@category), :prompt => "Select a category", class: 'form-control') %>
+   <br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <div style="padding: 50px"></div>
+    <%= f.submit "Add Restaurant", class: "btn btn-primary" %>
+  </div>
+    </div>
+</div>
+<% end %>
